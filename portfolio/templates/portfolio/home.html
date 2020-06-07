@@ -1,0 +1,183 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Titel -->
+<section id='intro'>
+
+  <div class="container-fluid intro">
+
+    <div class="row">
+      <div class="col-lg-6 intro-heading">
+        <h1 class='big-heading'>Hi, Welcome to my personal website!</h1>
+        <a href="{% static 'portfolio\Pieter-Zuijdwijk-cv.pdf' %}" class="btn btn-outline-warning btn-lg download-button" target="_blank"><i class="far fa-file-pdf"></i> cv</a>
+        <a href='#footer' class="btn btn-outline-light btn-lg download-button"><i class="far fa-envelope"></i> contact</a>
+      </div>
+      <div class="col-lg-6">
+        <img class='title-image' src="{% static  'portfolio\informalPieter.jpg'%}" alt="pieter-intro-foto">
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id='about'>
+
+  <div class="container-fluid about">
+
+    <div class="row">
+      {% for about in abouts %}
+
+      <div class="col-lg-6">
+        <img src="{{ about.image.url }}" class="about-image">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="big-heading">{{ about.title }}</h1>
+        <p class='about-paragraph'>{{ about.description }}</p>
+      </div>
+
+
+    </div>
+    {% endfor %}
+
+
+  </div>
+
+</section>
+
+<section id='internships'>
+
+  <div class="container-fluid internships">
+    <h2>Internships</h2>
+    <hr>
+
+    <div class="row">
+
+      {% for internship in internships %}
+      <div class="col-lg-4 col-md-4">
+
+        {% if internship.url %}
+        <a href="{{ internship.url }}">
+          <img class='intern-image' src="{{ internship.image.url }}" alt="">
+        </a>
+        {% else %}
+        <img class='intern-image' src="{{ internship.image.url }}" alt="">
+        {% endif %}
+        <h3 class='intern-heading'>{{ internship.title }}</h3>
+        <p>{{ internship.description }}</p>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id='jobs'>
+
+  <div class="container-fluid jobs">
+    <h2>Job experience</h2>
+    <hr>
+
+    <div class="row">
+
+      {% for work in works %}
+      <div class="col-lg-3 col-md-6">
+
+        {% if work.url %}
+        <a href="{{ work.url }}">
+          <img class='jobs-image' src="{{ work.image.url }}" alt="">
+        </a>
+        {% else %}
+        <img class='jobs-image' src="{{ work.image.url }}" alt="">
+        {% endif %}
+        <h3 class='jobs-heading'>{{ work.title }}</h3>
+        <p>{{ work.description }}</p>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id='education'>
+
+  <div class="container-fluid education">
+
+    <h2>Education</h2>
+    <hr>
+
+    <div class="row">
+
+      {% for study in education %}
+      <div class="col-lg-4 col-md-4">
+
+        {% if study.url %}
+        <a href="{{ study.url }}">
+          <img class='jobs-image' src="{{ study.image.url }}" alt="">
+        </a>
+        {% else %}
+        <img class='jobs-image' src="{{ study.image.url }}" alt="">
+        {% endif %}
+        <h3 class='education-heading'>{{ study.title }}</h3>
+        <p>{{ study.description }}</p>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer id="footer">
+
+  <div class="container-fluid footer-box">
+    <h2 class='footer-heading'>Get in touch</h2>
+    <br>
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <form action="mailto:zuijdwijkpieter@gmail.com" method="post" enctype="text/plain">
+          <input type="Text" name="text" value='' required="" placeholder="Your Name" class="form-control">
+          <br>
+          <input type="Email" name="email" value='' required="" placeholder="Your Email" class="form-control">
+          <br>
+          <textarea name=''  rows="6" placeholder="Message" required="" class="form-control"></textarea>
+          <br>
+          <center>
+            <button class="btn btn-info">Submit</button>
+          </center>
+
+        </form>
+
+      </div>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-5">
+        <br>
+        <p class="icn"><i class="fas fa-phone"></i> &nbsp;&nbsp; +316-53672632</p>
+        <p class="icn"><i class="far fa-envelope"></i> &nbsp;&nbsp; zuijdwijkpieter@gmail.com</p>
+        <a class="icn" href="https://www.linkedin.com/in/pieterzuijdwijk/"><i class="fab fa-linkedin-in"></i> &nbsp;&nbsp; LinkedIn</a>
+        <hr class='hr-footer'>
+
+      </div>
+
+    </div>
+</footer>
+{% endblock %}
