@@ -4,7 +4,7 @@ Django==3.0.7
 glasto==0.0.4
 kiwisolver==1.2.0
 matplotlib==3.2.1
-numpy==1.18.5
+numpy==1.22.0
 Pillow==7.1.2
 plotly==4.8.1
 PyInputPlus==0.2.9
